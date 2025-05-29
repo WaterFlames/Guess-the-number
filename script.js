@@ -45,20 +45,16 @@ function numberToText(sign, hundreds, tens, units, num) {
   if (num === 0) return 'ноль';
 
   const hundredsArr = [
-    '', 'сто', 'двести', 'триста', 'четыреста',
-    'пятьсот', 'шестьсот', 'семьсот', 'восемьсот', 'девятьсот'
+    '', 'сто', 'двести', 'триста', 'четыреста', 'пятьсот', 'шестьсот', 'семьсот', 'восемьсот', 'девятьсот'
   ];
   const tensArr = [
-    '', 'десять', 'двадцать', 'тридцать', 'сорок',
-    'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто'
+    '', 'десять', 'двадцать', 'тридцать', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто'
   ];
   const unitsArr = [
-    '', 'один', 'два', 'три', 'четыре',
-    'пять', 'шесть', 'семь', 'восемь', 'девять'
+    '', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'
   ];
   const teensArr = [
-    'десять', 'одиннадцать', 'двенадцать', 'тринадцать', 'четырнадцать',
-    'пятнадцать', 'шестнадцать', 'семнадцать', 'восемнадцать', 'девятнадцать'
+    'десять', 'одиннадцать', 'двенадцать', 'тринадцать', 'четырнадцать', 'пятнадцать', 'шестнадцать', 'семнадцать', 'восемнадцать', 'девятнадцать'
   ];
 
   let text = sign;
@@ -87,11 +83,19 @@ orderNumberField.innerText = orderNumber;
 answerField.innerText = `Вы загадали число ${splitNumberToDigits(answerNumber)}?`;
 
 // обработка событий кнопки заново
-document.getElementById('btnRetry').addEventListener('click', function () {
-    if (gameRun = true||false ){
-        location.reload()
-    }
-})
+document.getElementById('btnRetry').addEventListener('click', function() {
+    document.getElementById('minInput').value = '0';
+    document.getElementById('maxInput').value = '1';
+    
+    minValue = 0;
+    maxValue = 1;
+    answerNumber = Math.floor((minValue + maxValue) / 2);
+    orderNumber = 0;
+    gameRun = true;
+    
+    orderNumberField.innerText = orderNumber;
+    answerField.innerText = `Вы загадали число ${splitNumberToDigits(answerNumber)}?`;
+});
 
 // обработка событий кнопки больше
 document.getElementById('btnOver').addEventListener('click', function () {
