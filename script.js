@@ -39,7 +39,7 @@ function splitNumberToDigits(num) {
   return numberToText(sign, hundreds, tens, units, num);
 }
 
-// перевод разрядоа в текст, склеивание, измерение
+// перевод разрядов в текст, склеивание, измерение
 function numberToText(sign, hundreds, tens, units, num) {
   // обработка нуля
   if (num === 0) return 'ноль';
@@ -82,13 +82,25 @@ const answerField = document.getElementById('answerField');
 orderNumberField.innerText = orderNumber;
 answerField.innerText = `Вы загадали число ${splitNumberToDigits(answerNumber)}?`;
 
+function getDefaultMinValue() {
+    return 0;
+}
+
+function getDefaultMaxValue() {
+    return 1;
+}
+
 // обработка событий кнопки заново
 document.getElementById('btnRetry').addEventListener('click', function() {
-    document.getElementById('minInput').value = '0';
-    document.getElementById('maxInput').value = '1';
+    const min = getDefaultMinValue();
+    const max = getDefaultMaxValue();
+
+    document.getElementById('minInput').value = min;
+    document.getElementById('maxInput').value = max;
     
-    minValue = 0;
-    maxValue = 1;
+    minValue = min;
+    maxValue = max;
+
     answerNumber = Math.floor((minValue + maxValue) / 2);
     orderNumber = 0;
     gameRun = true;
